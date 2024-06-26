@@ -3,7 +3,6 @@ import { Section } from "./Section";
 import { cn } from "@/lib/utils";
 import { GithubIcon } from "./icons/Github";
 import Link from "next/link";
-import Image from "next/image";
 
 const Code = ({className,...props}: ComponentPropsWithRef<"span">) => {
     return <span className={cn("bg-accent/30 font-mono hover:bg-accent/50 border border-accent p-1 rounded-sm text-primary",className)} {...props}/>
@@ -32,14 +31,11 @@ export const Hero = () => {
           </p>
         </div>
         <div className="flex-[2] max-md:m-auto ml-auto">
-          <Image
+          <img
             src="./img/AntoineLeJean.png"
             alt="Antoine photo de profil"
             className="w-full h-auto max-w-xs max-md:w-56"
-            // src="./img/AntoineLeJean.png"
-            // alt="Antoine photo de profil"
-            // className="w-full h-auto max-w-xs max-md:w-56"
-            />
+          />
         </div>
       </Section>
     );

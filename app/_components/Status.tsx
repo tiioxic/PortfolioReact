@@ -8,12 +8,9 @@ import {
   Guitar,
   Hand,
   LucideIcon,
-  Rss,
-  StickyNote,
 } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
 
 export const Status = () => {
   return (
@@ -24,11 +21,11 @@ export const Status = () => {
           <div className="flex flex-col gap-4">
             {SIDE_PROJECTS.map((project, index) => (
               <SideProject
-                key={index}
-                Logo={project.Logo}
-                title={project.title}
-                description={project.description}
-                url={project.url}
+                key={index} {...project}
+                // Logo={project.Logo}
+                // title={project.title}
+                // description={project.description}
+                // url={project.url}
               />
             ))}
           </div>
@@ -117,8 +114,8 @@ const SideProject = (props: SideProjectProps) => {
         <props.Logo size={16} />
       </span>
       <div>
-        <p className="text-lg font-semibold">{props.title}</p>
-        <p className="text-lg text-muted-foreground">{props.description}</p>
+        <p className="text-md font-semibold">{props.title}</p>
+        <p className="text-md text-muted-foreground">{props.description}</p>
       </div>
     </Link>
   );
@@ -140,7 +137,7 @@ const WORKS: WorkProps[] = [
     title: "CLSM",
     date: "2023-2023",
     description: "Refonte graphique",
-    url: "https://www.google.fr/",
+    url: "https://clsm.epn-agglo.fr/",
     badge: true,
   },
 ];
@@ -160,7 +157,7 @@ const Work = (props: WorkProps) => {
       href={props.url}
       className="inline-flex items-center gap-4 hover:bg-accent/50 transition-colors p-1 rounded w-full"
     >
-      <Image
+      <img
         src={props.image}
         alt={props.title}
         className="w-10 h-10 object-contain rounded-md"
@@ -192,12 +189,12 @@ const ContactCard = (props: {
   return (
     <Card className="p-3 bg-accent/10 hover:bg-accent/30 mr-4 transition-colors group flex items-center gap-4">
       <div className="relative">
-        <Image
+        <img
           src={props.image}
           alt={props.name}
           className="w-10 h-10 rounded-full object-contain"
         />
-        <Image
+        <img
           src={props.mediumImage}
           alt={props.name}
           className="w-4 h-4 absolute -bottom-1 -right-1"
