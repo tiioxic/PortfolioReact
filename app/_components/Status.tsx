@@ -44,14 +44,14 @@ export const Status = () => {
           <p className="text-lg text-muted-foreground">Contactez moi</p>
           <ContactCard
             name="@antoinedev"
-            image="/img/AntoineLeJean.png"
+            image="./img/AntoineLeJean.png"
             mediumImage="./img/@.png"
             description="antoine_le_jean@outlook.fr"
           ></ContactCard>
           <ContactCard
             name="@antoinedev"
             image="./img/AntoineLeJean.png"
-            mediumImage="/img/linkedin.png"
+            mediumImage="./img/linkedin.png"
             description="Linkedin"
           ></ContactCard>
         </Card>
@@ -125,7 +125,7 @@ const SideProject = (props: SideProjectProps) => {
 ////////////////////////
 const WORKS: WorkProps[] = [
   {
-    image: "/img/clsm_logo.png",
+    image: "./img/clsm_logo.png",
     title: "CLSM",
     date: "2024-2024",
     description: "Developpement site",
@@ -133,7 +133,7 @@ const WORKS: WorkProps[] = [
     badge: true,
   },
   {
-    image: "/img/clsm_ancien_logo.png",
+    image: "./img/clsm_ancien_logo.png",
     title: "CLSM",
     date: "2023-2023",
     description: "Refonte graphique",
