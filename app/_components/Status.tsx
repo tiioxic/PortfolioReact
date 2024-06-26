@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
 export const Status = () => {
   return (
@@ -159,7 +160,7 @@ const Work = (props: WorkProps) => {
       href={props.url}
       className="inline-flex items-center gap-4 hover:bg-accent/50 transition-colors p-1 rounded w-full"
     >
-      <img
+      <Image
         src={props.image}
         alt={props.title}
         className="w-10 h-10 object-contain rounded-md"
@@ -191,12 +192,12 @@ const ContactCard = (props: {
   return (
     <Card className="p-3 bg-accent/10 hover:bg-accent/30 mr-4 transition-colors group flex items-center gap-4">
       <div className="relative">
-        <img
+        <Image
           src={props.image}
           alt={props.name}
           className="w-10 h-10 rounded-full object-contain"
         />
-        <img
+        <Image
           src={props.mediumImage}
           alt={props.name}
           className="w-4 h-4 absolute -bottom-1 -right-1"
