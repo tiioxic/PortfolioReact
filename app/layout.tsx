@@ -11,8 +11,8 @@ const AnekTelugu = Anek_Telugu({ subsets: ["latin"],
  });
 
 export const metadata: Metadata = {
-  title: "Antoine Le Jean • Software Engineer",
-  description: "Developer about React, Symfony and Next.js.",
+  title: "Antoine Le Jean • Développeur web",
+  description: "Developpeur Symfony, Sass et React.",
 };
 
 export default function RootLayout({

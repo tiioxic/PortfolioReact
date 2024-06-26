@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Section } from "./Section";
-import { ArrowUpRight, Code, LucideIcon, Rss, StickyNote } from "lucide-react";
+import { ArrowUpRight, Braces, Building2, Code, Guitar, Hand, LucideIcon, Rss, StickyNote } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 
@@ -36,13 +36,13 @@ export const Status = () => {
           <p className="text-lg text-muted-foreground">Contactez moi</p>
           <ContactCard
             name="@antoinedev"
-            image="https://qph.cf2.quoracdn.net/main-thumb-1741974871-200-wslbqjrpxhhopbfyshigqbczdbgxowrq.jpeg"
-            mediumImage="https://img.freepik.com/photos-gratuite/icone-symbole-internet-ligne_53876-144714.jpg?size=338&ext=jpg&ga=GA1.1.1413502914.1715212800&semt=ais_user"
-            description="E-mail"
+            image="./img/AntoineLeJean.png"
+            mediumImage="./img/@.png"
+            description="antoine_le_jean@outlook.fr"
           ></ContactCard>
           <ContactCard
             name="@antoinedev"
-            image="https://qph.cf2.quoracdn.net/main-thumb-1741974871-200-wslbqjrpxhhopbfyshigqbczdbgxowrq.jpeg"
+            image="./img/AntoineLeJean.png"
             mediumImage="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/1200px-LinkedIn_icon_circle.svg.png"
             description="Linkedin"
           ></ContactCard>
@@ -58,27 +58,33 @@ export const Status = () => {
 const SIDE_PROJECTS: SideProjectProps[] = [
   {
     Logo: Code,
-    title: "Codeline",
-    description: "Javascription password generator",
-    url: "https://www.google.fr/",
+    title: "Generator pasword",
+    description: "Javascripti password generator",
+    url: "https://tiioxic.github.io/generatorPassword/",
   },
   {
-    Logo: StickyNote,
-    title: "Codeline",
-    description: "Javascription password generator",
-    url: "https://www.google.fr/",
+    Logo: Braces,
+    title: "PokeAPI",
+    description: "Random pokemon avec API",
+    url: "https://tiioxic.github.io/pokeAPI/",
   },
   {
-    Logo: Code,
-    title: "Codeline",
-    description: "Javascription password generator",
-    url: "https://www.google.fr/",
+    Logo: Guitar,
+    title: "Disii Band",
+    description: "Exercice Front-end",
+    url: "https://tiioxic.github.io/bandmusic/",
   },
   {
-    Logo: Rss,
-    title: "Codeline",
-    description: "Javascription password generator",
-    url: "https://www.google.fr/",
+    Logo: Building2,
+    title: "Architecte",
+    description: "Exercice Front-end",
+    url: "https://tiioxic.github.io/architecture/",
+  },
+  {
+    Logo: Hand,
+    title: "PFC",
+    description: "Pierre feuilles ciseaux javascript",
+    url: "https://tiioxic.github.io/pierrefeuilleciseaux/",
   },
 ];
 
@@ -108,22 +114,20 @@ const SideProject = (props: SideProjectProps) => {
 ////////////////////////
 const WORKS: WorkProps[] = [
   {
-    image:
-      "https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp",
-    title: "CLSM",
-    date: "2024-2024",
-    description: "Refonte graphique",
-    url: "https://www.google.fr/",
-    badge: true, 
-  },
-  {
-    image:
-      "https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp",
+    image: "/img/clsm_logo.png",
     title: "CLSM",
     date: "2024-2024",
     description: "Developpement site",
     url: "https://www.google.fr/",
-    badge: true, 
+    badge: true,
+  },
+  {
+    image: "/img/clsm_ancien_logo.png",
+    title: "CLSM",
+    date: "2023-2023",
+    description: "Refonte graphique",
+    url: "https://www.google.fr/",
+    badge: true,
   },
 ];
 
@@ -169,7 +173,7 @@ const ContactCard = (props: {
   description: string;
 }) => {
   return (
-    <Card className="p-3 bg-accent/10 flex items-center gap-4">
+    <Card className="p-3 bg-accent/10 hover:bg-accent/30 mr-4 transition-colors group flex items-center gap-4">
       <div className="relative">
         <img src={props.image} alt={props.name} className="w-10 h-10 rounded-full object-contain" />
         <img
@@ -185,7 +189,7 @@ const ContactCard = (props: {
         </div>
         <p className="text-sm text-muted-foreground">{props.description}</p>
       </div>
-      <ArrowUpRight size={16} />
+      <ArrowUpRight className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" size={16} />
     </Card>
   );
 }
