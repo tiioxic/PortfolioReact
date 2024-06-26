@@ -32,7 +32,7 @@ export const Hero = () => {
         </div>
         <div className="flex-[2] max-md:m-auto ml-auto">
           <img
-            src="./img/AntoineLeJean.png"
+            src="/img/AntoineLeJean.png"
             alt="Antoine photo de profil"
             className="w-full h-auto max-w-xs max-md:w-56"
           />

@@ -1,6 +1,16 @@
 import { Card } from "@/components/ui/card";
 import { Section } from "./Section";
-import { ArrowUpRight, Braces, Building2, Code, Guitar, Hand, LucideIcon, Rss, StickyNote } from "lucide-react";
+import {
+  ArrowUpRight,
+  Braces,
+  Building2,
+  Code,
+  Guitar,
+  Hand,
+  LucideIcon,
+  Rss,
+  StickyNote,
+} from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 
@@ -17,7 +27,7 @@ export const Status = () => {
                 Logo={project.Logo}
                 title={project.title}
                 description={project.description}
-                url="/"
+                url={project.url}
               />
             ))}
           </div>
@@ -36,14 +46,14 @@ export const Status = () => {
           <p className="text-lg text-muted-foreground">Contactez moi</p>
           <ContactCard
             name="@antoinedev"
-            image="./img/AntoineLeJean.png"
+            image="/img/AntoineLeJean.png"
             mediumImage="./img/@.png"
             description="antoine_le_jean@outlook.fr"
           ></ContactCard>
           <ContactCard
             name="@antoinedev"
             image="./img/AntoineLeJean.png"
-            mediumImage="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/1200px-LinkedIn_icon_circle.svg.png"
+            mediumImage="/img/linkedin.png"
             description="Linkedin"
           ></ContactCard>
         </Card>
@@ -89,21 +99,24 @@ const SIDE_PROJECTS: SideProjectProps[] = [
 ];
 
 type SideProjectProps = {
-    Logo: LucideIcon;
-    title: string;
-    description: string;
-    url: string;
-}
+  Logo: LucideIcon;
+  title: string;
+  description: string;
+  url: string;
+};
 
 const SideProject = (props: SideProjectProps) => {
   return (
-    <Link href={props.url} className="inline-flex items-center gap-4 hover:bg-accent/50 transition-colors p-1 rounded">
+    <Link
+      href={props.url}
+      target="_blank"
+      className="inline-flex items-center gap-4 hover:bg-accent/50 transition-colors p-1 rounded"
+    >
       <span className="bg-accent text-accent-foreground p-4 rounded-sm">
         <props.Logo size={16} />
       </span>
       <div>
         <p className="text-lg font-semibold">{props.title}</p>
-
         <p className="text-lg text-muted-foreground">{props.description}</p>
       </div>
     </Link>
@@ -137,7 +150,7 @@ type WorkProps = {
   date: string;
   description: string;
   url: string;
-  badge?: boolean; 
+  badge?: boolean;
 };
 
 const Work = (props: WorkProps) => {
@@ -151,11 +164,14 @@ const Work = (props: WorkProps) => {
         alt={props.title}
         className="w-10 h-10 object-contain rounded-md"
       />
-
       <div className="mr-auto">
         <div className="flex items-center gap-2">
           <p className="text-lg font-semibold">{props.title}</p>
-          {props.badge && <Badge variant="outline" className="text-xs">Stage</Badge>}
+          {props.badge && (
+            <Badge variant="outline" className="text-xs">
+              Stage
+            </Badge>
+          )}
         </div>
         <p className="text-sm text-muted-foreground">{props.description}</p>
       </div>
@@ -167,15 +183,19 @@ const Work = (props: WorkProps) => {
 };
 
 const ContactCard = (props: {
-  image:string;
+  image: string;
   mediumImage: string;
-  name:string;
+  name: string;
   description: string;
 }) => {
   return (
     <Card className="p-3 bg-accent/10 hover:bg-accent/30 mr-4 transition-colors group flex items-center gap-4">
       <div className="relative">
-        <img src={props.image} alt={props.name} className="w-10 h-10 rounded-full object-contain" />
+        <img
+          src={props.image}
+          alt={props.name}
+          className="w-10 h-10 rounded-full object-contain"
+        />
         <img
           src={props.mediumImage}
           alt={props.name}
@@ -185,11 +205,13 @@ const ContactCard = (props: {
       <div className="mr-auto">
         <div className="flex items-center gap-2">
           <p className="text-lg font-semibold">{props.name}</p>
-
         </div>
         <p className="text-sm text-muted-foreground">{props.description}</p>
       </div>
-      <ArrowUpRight className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" size={16} />
+      <ArrowUpRight
+        className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform"
+        size={16}
+      />
     </Card>
   );
-}
+};
