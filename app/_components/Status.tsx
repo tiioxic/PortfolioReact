@@ -1,3 +1,4 @@
+"use client";
 import { Card } from "@/components/ui/card";
 import { Section } from "./Section";
 import {
@@ -5,12 +6,15 @@ import {
   Braces,
   Building2,
   Code,
+  Copy,
   Guitar,
   Hand,
   LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 export const Status = () => {
   return (
@@ -22,10 +26,10 @@ export const Status = () => {
             {SIDE_PROJECTS.map((project, index) => (
               <SideProject
                 key={index} {...project}
-                // Logo={project.Logo}
-                // title={project.title}
-                // description={project.description}
-                // url={project.url}
+              // Logo={project.Logo}
+              // title={project.title}
+              // description={project.description}
+              // url={project.url}
               />
             ))}
           </div>
@@ -33,7 +37,7 @@ export const Status = () => {
       </div>
       <div className="flex-[2] w-full flex flex-col gap-4 ">
         <Card className="p-4 flex-1">
-          <p className="text-lg text-muted-foreground">Travaux</p>
+          <p className="text-lg text-muted-foreground">Expériences</p>
           <div>
             {WORKS.map((work, index) => (
               <Work key={index} {...work} />
@@ -44,15 +48,14 @@ export const Status = () => {
           <p className="text-lg text-muted-foreground">Contactez moi</p>
           <ContactCard
             name="@antoinedev"
-            image="./img/AntoineLeJean.png"
-            mediumImage="./img/@.png"
-            description="antoine_le_jean@outlook.fr"
+            image="./img/ProtonMail_icon.svg"
+            description="contact.previous662@passinbox.com"
           ></ContactCard>
           <ContactCard
             name="@antoinedev"
-            image="./img/AntoineLeJean.png"
-            mediumImage="./img/linkedin.png"
+            image="./img/linkedin.png"
             description="Linkedin"
+            url="https://www.linkedin.com/in/antoine-le-jean-560945248/"
           ></ContactCard>
         </Card>
       </div>
@@ -129,7 +132,7 @@ const WORKS: WorkProps[] = [
     title: "CLSM",
     date: "2024-2024",
     description: "Developpement site",
-    url: "https://www.google.fr/",
+    url: "https://www.evreux.fr/mon-quotidien/sante-et-social/la-maison-de-la-sante/",
     badge: true,
   },
   {
@@ -137,7 +140,15 @@ const WORKS: WorkProps[] = [
     title: "CLSM",
     date: "2023-2023",
     description: "Refonte graphique",
-    url: "https://clsm.epn-agglo.fr/",
+    url: "https://www.evreux.fr/mon-quotidien/sante-et-social/la-maison-de-la-sante/",
+    badge: true,
+  },
+  {
+    image: "./img/ASSURANCE_MALADIE.svg",
+    title: "CPAM",
+    date: "2022-2022",
+    description: "Testeur application informatique",
+    url: "https://www.ameli.fr/eure/assure",
     badge: true,
   },
 ];
@@ -155,6 +166,7 @@ const Work = (props: WorkProps) => {
   return (
     <Link
       href={props.url}
+      target="_blank"
       className="inline-flex items-center gap-4 hover:bg-accent/50 transition-colors p-1 rounded w-full"
     >
       <img
@@ -182,34 +194,57 @@ const Work = (props: WorkProps) => {
 
 const ContactCard = (props: {
   image: string;
-  mediumImage: string;
   name: string;
   description: string;
+  url?: string;
 }) => {
-  return (
-    <Card className="p-3 bg-accent/10 hover:bg-accent/30 mr-4 transition-colors group flex items-center gap-4">
-      <div className="relative">
+  const handleCopy = () => {
+    if (!props.url) {
+      navigator.clipboard.writeText(props.description);
+      toast.success("Email copié dans le presse-papier");
+    }
+  };
+
+  const CardContent = (
+    <Card
+      onClick={handleCopy}
+      className={cn(
+        "p-3 bg-accent/10 hover:bg-accent/30 transition-colors group flex items-center gap-4",
+        !props.url && "cursor-pointer"
+      )}
+    >
+      <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
         <img
           src={props.image}
           alt={props.name}
-          className="w-10 h-10 rounded-full object-contain"
-        />
-        <img
-          src={props.mediumImage}
-          alt={props.name}
-          className="w-4 h-4 absolute -bottom-1 -right-1"
+          className="w-full h-full object-contain"
         />
       </div>
-      <div className="mr-auto">
+      <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
           <p className="text-lg font-semibold">{props.name}</p>
         </div>
-        <p className="text-sm text-muted-foreground">{props.description}</p>
+        <p className="text-sm text-muted-foreground truncate">{props.description}</p>
       </div>
-      <ArrowUpRight
-        className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform"
-        size={16}
-      />
+      {props.url ? (
+        <ArrowUpRight
+          className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform flex-shrink-0"
+          size={16}
+        />
+      ) : (
+        <Copy
+          className="group-hover:rotate-12 transition-transform flex-shrink-0"
+          size={16}
+        />
+      )}
     </Card>
+  );
+
+  return props.url ? (
+    <Link href={props.url} className="w-full" target="_blank">
+      {CardContent}
+    </Link>
+  ) : (
+    CardContent
   );
 };
