@@ -128,12 +128,12 @@ const SideProject = (props: SideProjectProps) => {
 ////////////////////////
 const WORKS: WorkProps[] = [
   {
-    image: "./img/clsm_logo.png",
-    title: "CLSM",
-    date: "2024-2024",
-    description: "Developpement site",
-    url: "https://www.evreux.fr/mon-quotidien/sante-et-social/la-maison-de-la-sante/",
-    badge: true,
+    image: "./img/ASSURANCE_MALADIE.svg",
+    title: "CPAM",
+    date: "2025",
+    description: "Testeur application informatique",
+    url: "https://www.ameli.fr/eure/assure",
+    badge: "CDI",
   },
   {
     image: "./img/clsm_ancien_logo.png",
@@ -141,15 +141,15 @@ const WORKS: WorkProps[] = [
     date: "2023-2023",
     description: "Refonte graphique",
     url: "https://www.evreux.fr/mon-quotidien/sante-et-social/la-maison-de-la-sante/",
-    badge: true,
+    badge: "Stage",
   },
   {
-    image: "./img/ASSURANCE_MALADIE.svg",
-    title: "CPAM",
-    date: "2022-2022",
-    description: "Testeur application informatique",
-    url: "https://www.ameli.fr/eure/assure",
-    badge: true,
+    image: "./img/clsm_logo.png",
+    title: "CLSM",
+    date: "2024-2024",
+    description: "Developpement site",
+    url: "https://www.evreux.fr/mon-quotidien/sante-et-social/la-maison-de-la-sante/",
+    badge: "Stage",
   },
 ];
 
@@ -159,7 +159,7 @@ type WorkProps = {
   date: string;
   description: string;
   url: string;
-  badge?: boolean;
+  badge?: string;
 };
 
 const Work = (props: WorkProps) => {
@@ -179,7 +179,7 @@ const Work = (props: WorkProps) => {
           <p className="text-lg font-semibold">{props.title}</p>
           {props.badge && (
             <Badge variant="outline" className="text-xs">
-              Stage
+              {props.badge}
             </Badge>
           )}
         </div>
