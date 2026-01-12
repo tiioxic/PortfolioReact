@@ -23,7 +23,7 @@ export const Hero = () => {
               <GithubIcon size={12} className="inline"></GithubIcon>developer
             </Code>
           </Link>{" "}
-          Autonome et créatif, je consacre également une partie de mon temps libre au développement web, ce qui me permet d’approfondir mes compétences techniques et de rester en veille sur les évolutions du domaine. Animé par l’envie d’apprendre et de progresser, j’évolue avec enthousiasme dans un environnement technologique dynamique et en constante évolution.
+          Autonome et créatif, je consacre également une partie de mon temps libre au développement web, ce qui me permet d’approfondir mes compétences techniques et de rester en veille sur les évolutions du domaine.
         </p>
       </div>
       <div className="flex-[2] max-md:m-auto ml-auto">
