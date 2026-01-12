@@ -69,6 +69,12 @@ export const Status = () => {
 const SIDE_PROJECTS: SideProjectProps[] = [
   {
     Logo: Code,
+    title: "TrackSubscribe",
+    description: "Gestionnaire de souscription (netflix, amazon,Disney+...)",
+    url: "https://mysubscribe.nexus-panel.online/",
+  },
+  {
+    Logo: Code,
     title: "Generator pasword",
     description: "Javascripti password generator",
     url: "https://tiioxic.github.io/generatorPassword/",
